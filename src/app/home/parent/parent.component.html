@@ -1,0 +1,11 @@
+<br>
+<br>
+<br>
+<h2>Parent to child data Passing</h2>
+<div class="container row">
+    <div *ngFor="let sub of subjects">
+        <div class="col-sm-4">
+            <app-child [data]="sub"></app-child>
+        </div>
+    </div>
+</div>

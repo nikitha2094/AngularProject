@@ -1,0 +1,70 @@
+<h2>TEMPLATE DRIVEN FORM VALIDATIONS</h2>
+<div class="container">
+
+<form [formGroup]="complexForm" class="form" (ngSubmit)="submitForm(complexForm.value)" method="post">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <label class="col-sm-4 control-label form-group" for="phonenumber">
+                    Phone Number
+                    <font class="text-danger">*</font>
+                </label>
+                <div class="controls col-sm-6">
+                    <input type="text" class="form-control" name="phoneNumber" minlength="10" maxlength="16" size="30" [formControl]="this.phoneNumber"
+                        [(ngModel)]="user.phoneNumber">
+                    <span *ngIf="this.phoneNumber.hasError('required') && this.formValidate" class="text-danger ">Please enter Phone Number</span>
+                    <span *ngIf="this.phoneNumber.hasError('minlength') && !this.phoneNumber.hasError('pattern')" class="text-danger">Phone Number Should be Min 10 digits</span>
+                    <span *ngIf="this.phoneNumber.hasError('pattern')" class="text-danger">Please enter only digits</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <label class="col-sm-4 control-label">
+                    Email
+                    <font class="text-danger">*</font>
+                </label>
+                <div class="controls col-sm-6">
+                    <input type="email" class="form-control form-group" id="email" name="email" size="30" value='' [formControl]="this.email"
+                        [(ngModel)]="user.email">
+                    <span *ngIf=" this.email.hasError('required') &&  this.formValidate" class="text-danger ">Please enter Primary Email</span>
+                    <span *ngIf=" this.email.hasError('pattern') " class="text-danger">Please enter a valid email address</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <label class="col-sm-4 control-label form-group"> First Name
+                    <font class="text-danger">*</font>
+                </label>
+                <div class="controls col-sm-6">
+                    <input type="text" class="form-control" maxlength="30" size="30" value='' [formControl]="this.firstName" [(ngModel)]="user.firstName">
+                    <span *ngIf=" this.firstName.hasError('required') &&  this.formValidate" class="text-danger ">Please Enter First Name</span>
+                    <span *ngIf=" this.firstName.hasError('pattern') " class="text-danger">Please enter only alphabets</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+
+    <br>
+    <div class="hr-line-dashed"></div>
+    <div class="row">
+        <div class="control-group col-sm-6 col-sm-offset-6">
+
+            <button type="button" id="driver_submit" class="btn  btn-success  " (click)="submitForm()">
+                <i class="fa fa-save"></i> Save
+            </button>
+        </div>
+    </div>
+</form>
+
+</div>
+
+
+
+<app-parent></app-parent>
